@@ -68,6 +68,7 @@ button:focus-visible{outline:2px solid var(--go);outline-offset:3px}
 .stk{width:min(72vw,280px);margin:6px auto;padding:10px;background:#fff;border-radius:22px;box-shadow:0 18px 40px -18px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.08);transform:rotate(-3deg);cursor:pointer;transition:transform .35s;border:0}
 .stk img{display:block;width:100%;height:auto;border-radius:14px}
 .stk.fl2{transform:rotate(3deg) scale(1.03)}
+.stk2{display:block;width:min(84vw,340px);margin:8px auto;padding:0;background:none;border:0;cursor:pointer;transform:rotate(2.5deg);transition:transform .35s}.stk2 img{display:block;width:100%;height:auto;filter:drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 12px 14px rgba(0,0,0,.35))}.stk2.fl2{transform:rotate(-3deg) scale(1.04)}
 .story{padding:30px 24px;text-align:left}
 .story h3{text-align:center;margin-bottom:6px}
 .story .by{text-align:center;margin-bottom:22px}
@@ -147,7 +148,7 @@ const TEXT={
  /* 9 · Sticker Desk */
  p9:{kicker:'PAGE 06 · STICKER ',title:'THE STICKER ',alt:'A stern older woman in a floral dress and cream shawl, hands on her hips, looking deeply unimpressed',
   lines:['You remember when you asked me for a sticker.','yea that sticker \n negeregna arogit.','This was harder than it sounds.'],
-  caption:'FIG. 1 · MAXIMUM DISAPPROVAL',
+  caption:'FIG. 1 · MAXIMUM DISAPPROVAL',caption2:'FIG. 2 · THE SIDE-EYE',alt2:'A stern older woman in a cream shawl and patterned head wrap, hand on her hip, giving a suspicious side-eye',
   reportTitle:'SEARCH REPORT',report:'Searched: everywhere.\nFound: this.\nJudgement level: extreme.',note:'I tried my best.',
   buttons:[['I LOVE IT','She is judging your approval.'],['TRY AGAIN','you gonna give me more details then.'],['SHE’S JUDGING ME','Correct. you brought this on yourself.']]},
  /* 10 · The Teacher's Class */
@@ -167,7 +168,7 @@ const TEXT={
  p14:{wait:'Wait.',envelopeAlt:'An envelope',fortuneLabel:'YOUR BIRTHDAY FORTUNE',button:'ONE LAST THING',end:'END OF ISSUE 01',
   fortunes:['You will win an argument today. The teacher will pretend he let you.','A tulip is closer than you think.','Your next idea will be better than the last one.','Prediction: a better question than the teacher’s.','The raw onion committee has approved this year.']},
  /* Little click-surprises */
- eggs:{united:'⚠️ DIPLOMATIC INCIDENT',spurs:'Celebration authorized.',teacher:'Students apparently continue to arrive.',tulip:'You weren’t supposed to notice that yet.',sticker:'She is judging you. Yes, you.'}
+ eggs:{united:'⚠️ DIPLOMATIC INCIDENT',spurs:'Celebration authorized.',teacher:'Students apparently continue to arrive.',tulip:'You weren’t supposed to notice that yet.',sticker2:'Second opinion: also judging.',sticker:'She is judging you. Yes, you.'}
 };
 
 /* ====================== CODE (no need to edit below) ====================== */
@@ -228,6 +229,7 @@ const PAGES=[
  `${K(P9.kicker)}${H(P9.title)}`,
  Q(P9.lines[0]),Q(P9.lines[1]),Q(P9.lines[2]),
  {get h(){return `<button class="stk" onclick="this.classList.toggle('fl2');toast(TEXT.eggs.sticker)" aria-label="${E(P9.alt)}"><img src="img/sticker.jpg" alt="${E(P9.alt)}"></button>${M(P9.caption)}`}},
+ `<button class="stk2" onclick="this.classList.toggle('fl2');toast(TEXT.eggs.sticker2)" aria-label="${E(P9.alt2)}"><img src="img/sticker2.webp" alt="${E(P9.alt2)}" loading="lazy"></button>${M(P9.caption2)}`,
  `<div class="card">${K(P9.reportTitle)}<p class="m" style="line-height:2">${N(P9.report)}</p></div><p class="hw" style="font-size:1.6rem">${N(P9.note)}</p>`,
  `<div class="bts">${P9.buttons.map(([a],i)=>`<button class="bt o" onclick="toast(TEXT.p9.buttons[${i}][1])">${N(a)}</button>`).join('')}</div>`]},
 {t:'dark',n:7,b:[
